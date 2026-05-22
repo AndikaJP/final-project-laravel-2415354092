@@ -11,9 +11,9 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    public function index($request): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $status = $request()->query('status');
+        $status = $request->query('status');
 
         $query = Service::query();
 
