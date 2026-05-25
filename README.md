@@ -28,6 +28,16 @@
 ![Proses Build Sukses](resources/images/endpoint-active-customer.png)
 ![Proses Build Sukses](resources/images/endpoint-deactive-customer.png)
 
+![Proses Build Sukses](resources/images/endpoint-get-api-services.png)
+![Proses Build Sukses](resources/images/endpoint-post-api-services.png)
+![Proses Build Sukses](resources/images/endpoint-get-services-by-id.png)
+![Proses Build Sukses](resources/images/endpoint-update-services.png)
+![Proses Build Sukses](resources/images/endpoint-delete-services.png)
+
+![Proses Build Sukses](resources/images/endpoint-get-subscription.png)
+![Proses Build Sukses](resources/images/endpoint-post-subscription.png)
+![Proses Build Sukses](resources/images/endpoint-get-subscription-by-id.png)
+
 ## Kesimpulan
 
 Tuliskan kesimpulan singkat atau kendala yang Anda hadapi beserta solusinya selama melakukan praktikum ini di sini.
