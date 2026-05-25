@@ -105,28 +105,30 @@ class ServiceController extends Controller
 
     public function destroy(int $service): JsonResponse
     {
-        $service = Service::query()->find($service);
+        $service = Service::find($service);
 
         if (!$service) {
             return response()->json([
-                "success" => false,
-                "message" => "Service not found",
+                'success' => false,
+                'message' => 'Service not found',
             ], 404);
         }
 
-        if (!$service->subscriptions()->exists()) {
+        // VALIDASI
+        if ($service->subscriptions()->exists()) {
+
             return response()->json([
-                "success" => false,
-                "message" => "Service cannot be deleted because it has subscriptions",
+                'success' => false,
+                'message' => 'Service cannot be deleted because it already has subscriptions',
             ], 422);
+
         }
 
         $service->delete();
 
         return response()->json([
-            "success" => true,
-            "message" => "Service deleted successfully",
-            "data" => null,
+            'success' => true,
+            'message' => 'Service deleted successfully',
         ]);
     }
 

@@ -111,20 +111,30 @@ class CustomerController extends Controller
 
     public function destroy(int $customer): JsonResponse
     {
-        $customer = Customer::query()->find($customer);
+        $customer = Customer::find($customer);
 
         if (!$customer) {
             return response()->json([
-                "success" => false,
-                "message" => "Customer not found",
+                'success' => false,
+                'message' => 'Customer not found',
             ], 404);
+        }
+
+        // VALIDASI
+        if ($customer->subscriptions()->exists()) {
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Customer cannot be deleted because it already has subscriptions',
+            ], 422);
+
         }
 
         $customer->delete();
 
         return response()->json([
-            "success" => true,
-            "message" => "Customer deleted successfully",
+            'success' => true,
+            'message' => 'Customer deleted successfully',
         ]);
     }
 
