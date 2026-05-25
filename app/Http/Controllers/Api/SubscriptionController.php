@@ -14,15 +14,10 @@ class SubscriptionController extends Controller
      */
     public function index(): JsonResponse
     {
-        $subscriptions = Subscription::query()
-            ->select([
-                'customer_id',
-                'service_id',
-                'start_date',
-                'end_date',
-                'status',
-            ])
-            ->get();
+        $subscriptions = Subscription::with([
+            'customer',
+            'service'
+        ])->get();
 
         return response()->json([
             'success' => true,
@@ -64,15 +59,10 @@ class SubscriptionController extends Controller
      */
     public function show(int $id): JsonResponse
     {
-        $subscription = Subscription::query()
-            ->select([
-                'customer_id',
-                'service_id',
-                'start_date',
-                'end_date',
-                'status',
-            ])
-            ->find($id);
+        $subscription = Subscription::with([
+            'customer',
+            'service'
+        ]);
 
         if (!$subscription) {
             return response()->json([
